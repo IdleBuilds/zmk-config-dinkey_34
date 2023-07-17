@@ -9,79 +9,11 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
-    combos {
-        compatible = "zmk,combos";
-
-        combo_0 {
-            bindings = <&kp KP_NUMBER_0>;
-            key-positions = <26 16>;
-            layers = <1>;
-        };
-
-        combo_ent {
-            bindings = <&kp ENTER>;
-            key-positions = <33 25>;
-            layers = <1 0>;
-        };
-
-        combo_tab {
-            bindings = <&kp TAB>;
-            key-positions = <1 11>;
-            layers = <0>;
-        };
-
-        combo_ent2 {
-            bindings = <&kp ENTER>;
-            key-positions = <23 24>;
-            layers = <0>;
-        };
-
-        combo_bckspc {
-            bindings = <&kp BACKSPACE>;
-            key-positions = <22 23>;
-            layers = <0>;
-        };
-
-        combo_min_und {
-            bindings = <&kp MINUS>;
-            key-positions = <5 15>;
-            layers = <0>;
-        };
-
-        combo_apos_qoute {
-            bindings = <&kp APOSTROPHE>;
-            key-positions = <6 16>;
-            layers = <0>;
-        };
-
-        combo_lparan {
-            bindings = <&kp LEFT_PARENTHESIS>;
-            key-positions = <7 17>;
-            layers = <0>;
-        };
-
-        combo_rparan {
-            bindings = <&kp RIGHT_PARENTHESIS>;
-            key-positions = <8 18>;
-            layers = <0>;
-        };
-
-        combo_lower {
-            bindings = <&mo 2>;
-            key-positions = <23 30>;
-            layers = <0>;
-        };
-
-        combo_lcntrl {
-            bindings = <&kp LEFT_CONTROL>;
-            key-positions = <11 21>;
-            layers = <0>;
-        };
-    };
 
     keymap {
         compatible = "zmk,keymap";
 
+        // This is a sample keymap intended to be replaced with your own
         base_layer {
             bindings = <
 &kp Q  &kp W  &kp E  &kp R           &kp T      &kp Y          &kp U      &kp I    &kp O      &kp P
