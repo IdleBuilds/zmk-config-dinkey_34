@@ -9,11 +9,87 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        combo_lower {
+            bindings = <&mo 2>;
+            key-positions = <24 30>;
+            layers = <0>;
+        };
+
+        combo_ent {
+            bindings = <&kp ENTER>;
+            key-positions = <33 25>;
+            layers = <0>;
+        };
+
+        combo_tab {
+            bindings = <&kp TAB>;
+            key-positions = <1 11>;
+            layers = <0>;
+        };
+
+        combo_ctrl {
+            bindings = <&kp LEFT_CONTROL>;
+            key-positions = <11 21>;
+            layers = <0>;
+        };
+
+        combo_bcspc {
+            bindings = <&kp BACKSPACE>;
+            key-positions = <22 23>;
+            layers = <0>;
+        };
+
+        combo_ent2 {
+            bindings = <&kp ENTER>;
+            key-positions = <23 24>;
+            layers = <0>;
+        };
+
+        combo_undscore {
+            bindings = <&kp MINUS>;
+            key-positions = <5 15>;
+            layers = <0>;
+        };
+
+        combo_quote {
+            bindings = <&kp APOS>;
+            key-positions = <6 16>;
+            layers = <0>;
+        };
+
+        combo_lprnth {
+            bindings = <&kp LEFT_PARENTHESIS>;
+            key-positions = <7 17>;
+            layers = <0>;
+        };
+
+        combo_rprnth {
+            bindings = <&kp RIGHT_PARENTHESIS>;
+            key-positions = <8 18>;
+            layers = <0>;
+        };
+
+        combo_0 {
+            bindings = <&kp NUMBER_0>;
+            key-positions = <16 26>;
+            layers = <1>;
+        };
+
+        combo_alt {
+            bindings = <&kp LEFT_ALT>;
+            key-positions = <2 12>;
+            layers = <0>;
+        };
+    };
 
     keymap {
         compatible = "zmk,keymap";
 
         // This is a sample keymap intended to be replaced with your own
+
         base_layer {
             bindings = <
 &kp Q  &kp W  &kp E  &kp R           &kp T      &kp Y          &kp U      &kp I    &kp O      &kp P
