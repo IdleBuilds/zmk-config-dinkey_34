@@ -83,6 +83,16 @@
             key-positions = <2 12>;
             layers = <0>;
         };
+        combo_exl {
+            bindings = <&kp EXCL>;
+            key-positions = <16 26>;
+            layers = <0>;
+        };
+        combo_quest {
+            bindings = <&kp QMARK>;
+            key-positions = <17 27>;
+            layers = <0>;
+        };
     };
 
     keymap {
