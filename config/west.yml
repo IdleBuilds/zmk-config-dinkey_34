@@ -1,11 +1,17 @@
-manifest:
+mmanifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: nickcoutsos
+      url-base: https://github.com/nickcoutsos
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: main
       import: app/west.yml
+    - name: keymap-editor-community-modules
+      remote: nickcoutsos
+      revision: main
+      import: true
   self:
     path: config
