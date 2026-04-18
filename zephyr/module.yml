@@ -1,0 +1,4 @@
+name: zmk-keyboard-dinkey34
+build:
+  settings:
+    board_root: .
