@@ -1,8 +1,8 @@
 ---
 include:
-  - board: nice_nano//zmk
+  - board: nice_nano/nrf52840/zmk
     shield: dinkey34_left nice_view_adapter nice_view
-  - board: nice_nano//zmk
+  - board: nice_nano/nrf52840/zmk
     shield: dinkey34_right nice_view_adapter nice_view
-  - board: nice_nano//zmk
+  - board: nice_nano/nrf52840/zmk
     shield: dinkey34_left studio-rpc-usb-uart nice_view_adapter nice_view
