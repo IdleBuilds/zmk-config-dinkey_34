@@ -14,19 +14,37 @@ The Dinkey 34 is a column-staggered split keyboard built around Kailh Choc V1 sw
 
 The Dinkey 34 shares its keymap structure and firmware logic with the Dinkey 32|30 — the difference between the two boards is in the PCB design and hardware pin assignments, not the keymap or ZMK behavior layer.
 
-### Specs
+---
+
+## Specs
+
+### Wireless Build (Nice!Nano v2)
 
 | | |
 |---|---|
 | **Keys** | 34 |
 | **Layout** | 3×5 column stagger + 2 thumb keys per side |
 | **Switches** | Kailh Choc V1 (PG1350), hot-swap |
-| **Controller** | Nice!Nano v2 |
-| **Display** | Nice!View (SPI) |
-| **Firmware** | ZMK (this repo) + QMK / Vial (wired, see main repo) |
+| **Hot-swap Sockets** | Mill-Max Low Profile |
+| **Controller** | Nice!Nano v2 (nRF52840) |
+| **Display** | Nice!View (SPI, Memory-in-Pixel) |
 | **Connectivity** | Bluetooth 5.0 / USB-C |
 | **Battery** | 110mAh LiPo |
 | **Split** | Wireless BLE (no TRRS required) |
+| **Firmware** | ZMK (this repo) |
+
+### Wired Build (Pro Micro)
+
+| | |
+|---|---|
+| **Keys** | 34 |
+| **Layout** | 3×5 column stagger + 2 thumb keys per side |
+| **Switches** | Kailh Choc V1 (PG1350), hot-swap |
+| **Hot-swap Sockets** | Kailh Choc hotswap sockets |
+| **Controller** | Pro Micro (ATmega32U4) |
+| **Display** | 128×32 OLED (optional) |
+| **Connectivity** | USB-C (TRRS split cable included) |
+| **Firmware** | QMK / Vial (see main repo) |
 
 ---
 
@@ -133,6 +151,8 @@ The Dinkey 34 is available as a kit or complete build from [Idle Builds](https:/
 | Complete Build — Wired | from $175 |
 | Complete Build — Wireless | from $275 |
 
+Prices subject to change due to component availability and tariffs.
+
 ---
 
 ## Related
@@ -146,7 +166,7 @@ The Dinkey 34 is available as a kit or complete build from [Idle Builds](https:/
 
 ## Contact
 
-Questions about the build, firmware, or purchasing? Reach out at [eldi@idlebuilds.com](mailto:eldi@idlebuilds.com)
+Questions about the build, firmware, or purchasing? Reach out at [clayton@idlebuilds.com](mailto:clayton@idlebuilds.com)
 
 ---
 
