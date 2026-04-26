@@ -2,6 +2,8 @@
 
 ZMK firmware config for the Dinkey 34. Runs on the nice!nano v2 with optional nice!view display.
 
+[![Dinkey 34 ZMK Build](docs/images/dinkey_34_zmk.png)](docs/images/dinkey_34_zmk.png)
+
 ---
 
 ## Hardware
@@ -43,7 +45,7 @@ Flash `settings_reset-...uf2` to both halves, then reflash normal firmware.
 
 No code required. ZMK Studio lets you remap keys visually in your browser.
 
-![Dinkey 34 in ZMK Studio](assets/dinkey_34_zmkstudio.png)
+[![Dinkey 34 in ZMK Studio](docs/images/dinkey_34_zmkstudio.png)](docs/images/dinkey_34_zmkstudio.png)
 
 **What you need:**
 - Left half connected via USB
@@ -77,6 +79,18 @@ Layer 0 — Base
 ```
 
 3 layers total. Layer 2 has Bluetooth profile switching, BT clear, and the output toggle (BLE ↔ USB).
+
+---
+
+## Gallery
+
+| ZMK Build | QMK Build |
+|---|---|
+| [![ZMK](docs/images/dinkey_34_zmk.png)](docs/images/dinkey_34_zmk.png) | [![QMK](docs/images/dinkey_34_qmk.png)](docs/images/dinkey_34_qmk.png) |
+
+| PCB |
+|---|
+| [![PCB](docs/images/dinkey_34_naked.png)](docs/images/dinkey_34_naked.png) |
 
 ---
 
