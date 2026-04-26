@@ -1,175 +1,120 @@
-# ZMK Config — Dinkey 34
+# Dinkey 34 — ZMK Firmware
 
-ZMK firmware configuration for the **Dinkey 34**, a 34-key low-profile wireless split keyboard by [Idle Builds](https://idlebuilds.com).
-
-<div align="center">
-<img src="docs/images/dinkey_34_zmk.png" alt="Dinkey 34" width="800"/>
-</div>
+ZMK firmware config for the Dinkey 34. Runs on the nice!nano v2 with optional nice!view display.
 
 ---
 
-## About the Dinkey 34
+## Hardware
 
-The Dinkey 34 is a column-staggered split keyboard built around Kailh Choc V1 switches and the Nice!Nano v2 wireless controller. It features 3 pinky column keys per side and 2 thumb keys per side, making it a comfortable entry point into the Dinkey keyboard lineup.
-
-The Dinkey 34 shares its keymap structure and firmware logic with the Dinkey 32|30 — the difference between the two boards is in the PCB design and hardware pin assignments, not the keymap or ZMK behavior layer.
-
----
-
-## Specs
-
-### Wireless Build (Nice!Nano v2)
-
-| | |
-|---|---|
-| **Keys** | 34 |
-| **Layout** | 3×5 column stagger + 2 thumb keys per side |
-| **Switches** | Kailh Choc V1 (PG1350), hot-swap |
-| **Hot-swap Sockets** | Mill-Max Low Profile |
-| **Controller** | Nice!Nano v2 (nRF52840) |
-| **Display** | Nice!View (SPI, Memory-in-Pixel) |
-| **Connectivity** | Bluetooth 5.0 / USB-C |
-| **Battery** | 110mAh LiPo |
-| **Split** | Wireless BLE (no TRRS required) |
-| **Firmware** | ZMK (this repo) |
-
-### Wired Build (Pro Micro)
-
-| | |
-|---|---|
-| **Keys** | 34 |
-| **Layout** | 3×5 column stagger + 2 thumb keys per side |
-| **Switches** | Kailh Choc V1 (PG1350), hot-swap |
-| **Hot-swap Sockets** | Kailh Choc hotswap sockets |
-| **Controller** | Pro Micro (ATmega32U4) |
-| **Display** | 128×32 OLED (optional) |
-| **Connectivity** | USB-C (TRRS split cable included) |
-| **Firmware** | QMK / Vial (see main repo) |
-
----
-
-## Gallery
-
-<div align="center">
-
-| ZMK Build | QMK Build |
-|:---:|:---:|
-| <img src="docs/images/dinkey_34_zmk.png" width="420"/> | <img src="docs/images/dinkey_34_qmk.png" width="420"/> |
-
-| PCB (back) |
-|:---:|
-| <img src="docs/images/dinkey_34_naked.png" width="600"/> |
-
-</div>
-
----
-
-## Getting Started
-
-### Option 1 — Fork and build (recommended for customization)
-
-1. Fork this repository
-2. GitHub Actions will automatically build firmware on every push
-3. Go to the **Actions** tab → select the latest run → download the `firmware` artifact
-4. Extract the zip — you'll find `.uf2` files for left half, right half, and ZMK Studio
-
-### Option 2 — Download pre-built firmware
-
-Pre-built firmware is available from the [Releases](../../releases) page.
+- **MCU:** nice!nano v2 (hotswap socket)
+- **Display:** nice!view (optional, hotswap)
+- **Switches:** Kailh Choc v1 hotswap
+- **Layout:** 3×5+2 split, 34 keys
 
 ---
 
 ## Flashing
 
-1. Double-tap the reset button on your Nice!Nano — it will appear as a USB drive named `NICENANO`
-2. Drag and drop the appropriate `.uf2` file onto the drive
-3. The drive will disconnect automatically when flashing is complete
+Each build produces three `.uf2` files:
 
-Flash the **left** `.uf2` to the left half and the **right** `.uf2` to the right half.
+| File | What it's for |
+|---|---|
+| `dinkey34_left-...uf2` | Left half |
+| `dinkey34_right-...uf2` | Right half |
+| `settings_reset-...uf2` | Clears BT pairing data |
 
-> **First flash or pairing issues?** Flash `settings_reset` to both halves first to clear stale pairing data, then reflash left and right firmware.
+Download the latest from the **Actions** tab → most recent run → **Artifacts**.
+
+**To flash:**
+1. Unzip the artifact
+2. Plug in the left half via USB
+3. Double-tap the reset button on the nice!nano — it'll show up as a `NICENANO` drive
+4. Drag `dinkey34_left-...uf2` onto the drive
+5. Repeat for the right half
+
+Flash the left first. The right connects to the left over BLE.
+
+**To reset Bluetooth pairing:**
+Flash `settings_reset-...uf2` to both halves, then reflash normal firmware.
 
 ---
 
 ## ZMK Studio
 
-This config includes a ZMK Studio enabled build for real-time keymap editing over USB — no reflashing required.
+No code required. ZMK Studio lets you remap keys visually in your browser.
 
-To use ZMK Studio:
-1. Flash the `studio` `.uf2` to the **left half** (the right half uses regular firmware)
-2. Connect the left half to your PC via USB-C
-3. Open [zmk.studio](https://zmk.studio) in Chrome or download the desktop app
-4. Select your keyboard and start remapping
+![Dinkey 34 in ZMK Studio](assets/dinkey_34_zmkstudio.png)
 
-> ZMK Studio changes are stored on the keyboard. Reflashing firmware will reset the keymap to the defaults defined in `config/dinkey34.keymap`.
+**What you need:**
+- Left half connected via USB
+- Chrome or Edge (Chromium-based)
+- [studio.zmk.dev](https://studio.zmk.dev)
 
----
-
-## Customizing Your Keymap
-
-Edit `config/dinkey34.keymap` to change your layout. After saving, commit and push to trigger a new GitHub Actions build.
-
-Refer to the [ZMK documentation](https://zmk.dev/docs/keymaps) for keymap syntax and available behaviors.
-
----
-
-## Build Guide
-
-Full assembly instructions are available at [idlebuilds.com/build-guide](https://idlebuilds.com/build-guide).
+**Steps:**
+1. Plug in the left half
+2. The board defaults to BLE. Switch to USB output by pressing the output toggle on Layer 2
+3. Open [studio.zmk.dev](https://studio.zmk.dev) and click Connect
+4. Select the Dinkey 34 from the device list
+5. Press **Q + P** at the same time to unlock Studio (top outer keys, positions 0 and 9)
+6. Remap away — changes save to the keyboard automatically
 
 ---
 
-## File Structure
+## Default Layout
+
+Layer 0 — Base
 
 ```
-zmk-config-dinkey_34/
-├── build.yaml                        # GitHub Actions build matrix
-├── config/
-│   ├── dinkey34.keymap               # Keymap definition
-│   ├── dinkey34.conf                 # Firmware configuration
-│   └── west.yml                      # ZMK dependency manifest
-├── boards/shields/dinkey34/
-│   ├── Kconfig.defconfig             # Shield Kconfig defaults
-│   ├── Kconfig.shield                # Shield detection
-│   ├── dinkey34.dtsi                 # Matrix transform + kscan base
-│   ├── dinkey34-layouts.dtsi         # Physical key layout (ZMK Studio)
-│   ├── dinkey34_left.overlay         # Left half pin assignments
-│   └── dinkey34_right.overlay        # Right half pin assignments
-└── .github/workflows/build.yml       # GitHub Actions workflow
+┌───┬───┬───┬───┬───┐   ┌───┬───┬───┬───┬───┐
+│ Q │ W │ E │ R │ T │   │ Y │ U │ I │ O │ P │
+├───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┤
+│ A │ S │ D │ F │ G │   │ H │ J │ K │ L │ ; │
+├───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┤
+│ Z │ X │ C │ V │ B │   │ N │ M │ , │ . │ / │
+└───┴───┴───┼───┼───┤   ├───┼───┼───┴───┴───┘
+            │SFT│ENT│   │BSP│SPC│
+            └───┴───┘   └───┴───┘
+```
+
+3 layers total. Layer 2 has Bluetooth profile switching, BT clear, and the output toggle (BLE ↔ USB).
+
+---
+
+## Repo Structure
+
+```
+config/
+  boards/shields/dinkey34/
+    dinkey34.dtsi            ← Row/col pin definitions for the 34 PCB
+    dinkey34_left.overlay    ← Left half wiring
+    dinkey34_right.overlay   ← Right half wiring
+    dinkey34.zmk.yml
+    Kconfig.shield
+    Kconfig.defconfig
+  dinkey34.keymap
+  dinkey34.conf
+build.yaml
 ```
 
 ---
 
-## Purchasing
+## Building Locally
 
-The Dinkey 34 is available as a kit or complete build from [Idle Builds](https://idlebuilds.com).
+```bash
+west build -s app -b nice_nano/nrf52840/zmk \
+  -d build/left \
+  -- -DSHIELD="dinkey34_left nice_view_adapter nice_view" \
+     -DCONFIG_ZMK_STUDIO=y \
+     -DSNIPPET=studio-rpc-usb-uart
+```
 
-| Option | Price |
-|---|---|
-| Kit — Wired | from $80 |
-| Kit — Wireless | from $195 |
-| Complete Build — Wired | from $175 |
-| Complete Build — Wireless | from $275 |
-
-Prices subject to change due to component availability and tariffs.
+Studio is enabled on the left half only.
 
 ---
 
 ## Related
 
-- [zmk-config-dinkey_32_30](https://github.com/IdleBuilds/zmk-config-dinkey_32_30) — ZMK config for the Dinkey 32|30
-- [Idle Builds Dinkey](https://github.com/IdleBuilds/Dinkey) — Hardware files, QMK, Vial, and build guides
-- [ZMK Documentation](https://zmk.dev/docs)
-- [Idle Builds](https://idlebuilds.com)
-
----
-
-## Contact
-
-Questions about the build, firmware, or purchasing? Reach out at [clayton@idlebuilds.com](mailto:clayton@idlebuilds.com)
-
----
-
-## License
-
-MIT © Idle Builds
+- [Dinkey 32|30 ZMK config](https://github.com/IdleBuilds/zmk-config-dinkey_32_30)
+- [Main repo](https://github.com/IdleBuilds/Dinkey)
+- [idlebuilds.com](https://idlebuilds.com)
+- [ZMK docs](https://zmk.dev/docs) · [ZMK Studio](https://studio.zmk.dev)
